@@ -1,0 +1,4 @@
+[
+    {"expense_id": "EXP001", "description": "Аренда офиса", "amount": 35000, "date": "2025-04-01"},
+    {"expense_id": "EXP002", "description": "Канцелярия", "amount": 2500, "date": "2025-04-05"}
+]

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка товара</title>
+    <style>
+        body { font-family: 'DejaVu Sans', sans-serif; margin: 2cm; }
+        .product { border: 1px solid #ccc; padding: 20px; border-radius: 10px; }
+        h2 { color: #2980b9; }
+        .price { font-size: 20pt; color: #c0392b; }
+    </style>
+</head>
+<body>
+    <div class="product">
+        <h2>{{ name }}</h2>
+        <p><strong>Категория:</strong> {{ category }}</p>
+        <p><strong>Артикул:</strong> {{ product_id }}</p>
+        <p class="price">Цена: {{ price }} руб.</p>
+        <p><strong>В наличии:</strong> {{ stock }} шт.</p>
+    </div>
+</body>
+</html>

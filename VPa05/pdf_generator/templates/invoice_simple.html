@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Счёт № {{ invoice_id }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: 'DejaVu Sans', 'Roboto', sans-serif;
+            font-size: 12pt;
+            line-height: 1.4;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .company {
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            word-wrap: break-word;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ecf0f1;
+        }
+        .total {
+            text-align: right;
+            font-size: 14pt;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 10pt;
+            color: #7f8c8d;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company">
+            <strong>ООО "Моя Компания"</strong><br>
+            ИНН 1234567890, КПП 123456789<br>
+            г. Москва, ул. Примерная, д. 1
+        </div>
+        <div>
+            <strong>Счёт № {{ invoice_id }}</strong><br>
+            Дата: {{ date }}
+        </div>
+    </div>
+
+    <p><strong>Покупатель:</strong> {{ customer_name }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Товар/услуга</th>
+                <th>Кол-во</th>
+                <th>Цена, руб.</th>
+                <th>Сумма, руб.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{ quantity }}</td>
+                <td>{{ price }}</td>
+                <td>{{ total }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total">
+        Итого к оплате: {{ total }} руб.
+    </div>
+
+    <div class="footer">
+        Спасибо за сотрудничество!<br>
+        Документ сгенерирован автоматически.
+    </div>
+</body>
+</html>

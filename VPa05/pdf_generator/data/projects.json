@@ -1,0 +1,4 @@
+[
+    {"project_code": "WEB-01", "name": "Разработка сайта", "budget": 150000},
+    {"project_code": "MOB-02", "name": "Мобильное приложение", "budget": 250000}
+]

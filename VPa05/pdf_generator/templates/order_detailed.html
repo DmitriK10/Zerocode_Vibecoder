@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказ № {{ order_id }}</title>
+    <style>
+        body {
+            font-family: 'DejaVu Sans', 'Roboto', sans-serif;
+            margin: 2cm;
+            font-size: 12pt;
+        }
+        h1 { color: #27ae60; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            word-wrap: break-word;
+        }
+        th, td {
+            border: 1px solid #95a5a6;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background: #d5f5e3;
+        }
+        .total {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Детали заказа № {{ order_id }}</h1>
+    <p><strong>Клиент:</strong> {{ customer }}</p>
+    <p><strong>Дата заказа:</strong> {{ date }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Количество</th>
+                <th>Цена, руб.</th>
+                <th>Стоимость, руб.</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ items }}
+        </tbody>
+    </table>
+
+    <div class="total">Общая сумма: {{ total }} руб.</div>
+</body>
+</html>
