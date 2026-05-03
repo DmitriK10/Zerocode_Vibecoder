@@ -1,0 +1,8 @@
+digraph ERD {
+	rankdir=LR
+	INTEGER -> t
+	NULL -> c
+	NULL -> m
+	NULL -> m
+	NULL -> m
+}
