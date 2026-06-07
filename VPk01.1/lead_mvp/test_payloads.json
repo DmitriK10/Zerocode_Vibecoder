@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "description": "✅ Валидный запрос — все поля заполнены",
+    "payload": {
+      "name": "Ирина",
+      "contact": "+79990000000",
+      "source": "landing",
+      "comment": "Хочу консультацию по тарифам"
+    },
+    "expected_status": 201,
+    "expected_message": "Lead saved successfully"
+  },
+  {
+    "id": 2,
+    "description": "✅ Валидный запрос — минимальные поля (без comment)",
+    "payload": {
+      "name": "Анна",
+      "contact": "anna@example.com",
+      "source": "facebook"
+    },
+    "expected_status": 201,
+    "expected_message": "Lead saved successfully"
+  },
+  {
+    "id": 3,
+    "description": "❌ Ошибка — отсутствует обязательное поле contact",
+    "payload": {
+      "name": "Петр",
+      "source": "site",
+      "comment": "Тест"
+    },
+    "expected_status": 400,
+    "expected_message": "Невалидный запрос. Проверьте поля name, contact (обязательно), source, comment."
+  },
+  {
+    "id": 4,
+    "description": "❌ Ошибка — contact пустая строка",
+    "payload": {
+      "name": "Мария",
+      "contact": "",
+      "source": "telegram",
+      "comment": ""
+    },
+    "expected_status": 400,
+    "expected_message": "Невалидный запрос. Проверьте поля name, contact (обязательно), source, comment."
+  },
+  {
+    "id": 5,
+    "description": "❌ Ошибка — contact состоит из пробелов",
+    "payload": {
+      "name": "Олег",
+      "contact": "   ",
+      "source": "vk",
+      "comment": "Пробелы"
+    },
+    "expected_status": 400,
+    "expected_message": "Невалидный запрос. Проверьте поля name, contact (обязательно), source, comment."
+  },
+  {
+    "id": 6,
+    "description": "❌ Ошибка — отсутствует поле name (contact есть)",
+    "payload": {
+      "contact": "+71234567890",
+      "source": "instagram",
+      "comment": "Имя не указано"
+    },
+    "expected_status": 400,
+    "expected_message": "Невалидный запрос. Проверьте поля name, contact (обязательно), source, comment."
+  },
+  {
+    "id": 7,
+    "description": "❌ Ошибка — отсутствует поле source",
+    "payload": {
+      "name": "Светлана",
+      "contact": "svetlana@mail.ru",
+      "comment": "Нет источника"
+    },
+    "expected_status": 400,
+    "expected_message": "Невалидный запрос. Проверьте поля name, contact (обязательно), source, comment."
+  },
+  {
+    "id": 8,
+    "description": "✅ Валидный запрос — все поля, длинные значения",
+    "payload": {
+      "name": "Александр Сергеевич Пушкин",
+      "contact": "+7 (999) 123-45-67",
+      "source": "email рассылка",
+      "comment": "Длинный комментарий с описанием потребностей клиента и дополнительными пожеланиями."
+    },
+    "expected_status": 201,
+    "expected_message": "Lead saved successfully"
+  },
+  {
+    "id": 9,
+    "description": "✅ Валидный запрос — специальные символы в контакте",
+    "payload": {
+      "name": "John Doe",
+      "contact": "john.doe+test@gmail.com",
+      "source": "google_ads",
+      "comment": "Лид из США"
+    },
+    "expected_status": 201,
+    "expected_message": "Lead saved successfully"
+  },
+  {
+    "id": 10,
+    "description": "❌ Ошибка — невалидный JSON (синтаксическая ошибка) – этот кейс не может быть описан в JSON, он проверяется отдельно",
+    "note": "Для проверки отправьте строку '{\"name\": \"Ошибка\", \"contact\": \"123\"' (без закрывающей скобки). Ожидается 400."
+  }
+]

@@ -1,0 +1,27 @@
+###########################################
+# ОКНО №1 (запуск сервера)
+###########################################
+cd C:\Users\ADATA\Documents\Zerocode_Vibecoder\VPk01.1
+venv\Scripts\activate
+uvicorn app.main:app --reload
+
+###########################################
+# ОКНО №2 (все остальные команды)
+###########################################
+cd C:\Users\ADATA\Documents\Zerocode_Vibecoder\VPk01.1
+venv\Scripts\activate
+
+# 1. Валидный запрос
+Invoke-WebRequest -Uri "http://127.0.0.1:8000/lead" -Method POST -ContentType "application/json" -Body '{"name":"Ирина","contact":"+79990000000","source":"landing","comment":"Хочу консультацию"}'
+
+# 2. Проверка БД
+python -c "import sqlite3; conn = sqlite3.connect('leads.db'); cur = conn.cursor(); cur.execute('SELECT * FROM leads'); rows = cur.fetchall(); print(rows); conn.close()"
+
+# 3. Проверка лога
+Get-Content .\events.log
+
+# 4. Ошибка 400 (нет поля contact)
+Invoke-WebRequest -Uri "http://127.0.0.1:8000/lead" -Method POST -ContentType "application/json" -Body '{"name":"Петр","source":"site"}'
+
+# 5. Авто-тесты (опционально)
+python run_tests.py
