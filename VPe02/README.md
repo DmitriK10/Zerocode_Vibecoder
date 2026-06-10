@@ -4,7 +4,7 @@
 
 - `GET /` – информация о приложении
 - `GET /health` – проверка здоровья
-- `GET /info` – версия и принципы SOLID
+- `GET /info` – версия 
 - `GET /calc/<operation>/<a>/<b>` – вычисления (operation: add, subtract, multiply, divide).  
   Пример: `/calc/add/10/5` → `{"result":15.0}`
 
