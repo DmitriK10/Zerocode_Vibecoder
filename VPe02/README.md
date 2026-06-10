@@ -1,4 +1,4 @@
-# SOLID Flask приложение в Docker
+# Flask приложение в Docker
 
 ## Эндпоинты
 
