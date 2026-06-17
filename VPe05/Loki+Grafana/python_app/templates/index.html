@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Test App - Frontend</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .block { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        button { padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+        table { border-collapse: collapse; }
+        td { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <h1>Docker Test App - Frontend</h1>
+
+    <div class="block">
+        <h2>Информация о системе</h2>
+        <button onclick="location.href='/system'">Получить информацию</button>
+        <pre id="system-info">{{ system_info or "Нажмите кнопку" }}</pre>
+    </div>
+
+    <div class="block">
+        <h2>Главная информация</h2>
+        <button onclick="location.href='/main'">Получить главную информацию</button>
+        <pre id="main-info">{{ main_info or "Нажмите кнопку" }}</pre>
+    </div>
+
+    <div class="block">
+        <h2>Математические операции</h2>
+        <form action="/math" method="get">
+            <table>
+                <tr>
+                    <td><input type="number" name="a" value="10" step="any" required></td>
+                    <td><select name="op">
+                        <option value="multiply">×</option>
+                        <option value="divide">÷</option>
+                    </select></td>
+                    <td><input type="number" name="b" value="5" step="any" required></td>
+                    <td><button type="submit">Выполнить</button></td>
+                </tr>
+            </table>
+        </form>
+        <pre id="math-result">{{ math_result or "Результат появится здесь" }}</pre>
+    </div>
+</body>
+</html>
