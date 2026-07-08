@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёт по клиенту</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #2c3e50; }
+        .field { margin-bottom: 10px; }
+        .label { font-weight: bold; }
+        .value { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Отчёт по клиенту</h1>
+    <div class="field"><span class="label">Дата:</span> <span class="value">{{ date }}</span></div>
+    <div class="field"><span class="label">Имя клиента:</span> <span class="value">{{ client_name }}</span></div>
+    <div class="field"><span class="label">Тема:</span> <span class="value">{{ topic }}</span></div>
+    <div class="field"><span class="label">Основной запрос:</span> <span class="value">{{ main_request }}</span></div>
+    <div class="field"><span class="label">Настроение:</span> <span class="value">{{ mood }}</span></div>
+    <div class="field"><span class="label">Желаемые сроки:</span> <span class="value">{{ desired_timeline }}</span></div>
+    <div class="field"><span class="label">Бюджет:</span> <span class="value">{{ budget }}</span></div>
+    <div class="field"><span class="label">Ключевые пожелания:</span> <span class="value">{{ key_features }}</span></div>
+    <div class="field"><span class="label">Следующие шаги:</span> <span class="value">{{ next_steps }}</span></div>
+</body>
+</html>

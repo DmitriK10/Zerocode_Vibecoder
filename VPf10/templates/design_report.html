@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Отчёт по дизайну сайта</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #2c3e50; }
+        .field { margin-bottom: 10px; }
+        .label { font-weight: bold; }
+        .value { margin-left: 10px; }
+        img { max-width: 100%; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Отчёт по дизайну сайта</h1>
+    <div class="field"><span class="label">Дата:</span> <span class="value">{{ date }}</span></div>
+    <div class="field"><span class="label">Клиент:</span> <span class="value">{{ client_name }}</span></div>
+    <div class="field"><span class="label">Описание проекта:</span> <span class="value">{{ project_description }}</span></div>
+    <div class="field"><span class="label">Цветовая гамма:</span> <span class="value">{{ color_scheme }}</span></div>
+    <div class="field"><span class="label">Стиль:</span> <span class="value">{{ style }}</span></div>
+    <div class="field"><span class="label">Целевая аудитория:</span> <span class="value">{{ target_audience }}</span></div>
+    <h2>Пример дизайна</h2>
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="Пример дизайна">
+</body>
+</html>
