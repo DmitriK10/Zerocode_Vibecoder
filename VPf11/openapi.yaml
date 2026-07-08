@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  title: User API
+  version: 1.0.0
+  description: Управление пользователями с безопасной работой с БД и обработкой ошибок
+servers:
+  - url: http://localhost:8080
+paths:
+  /adduser:
+    post:
+      summary: Добавить пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddUserRequest'
+      responses:
+        '201':
+          description: Пользователь создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddUserResponse'
+        '400':
+          description: Неверный запрос
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/{uid}:
+    get:
+      summary: Получить пользователя по ID
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /activate/{uid}:
+    get:
+      summary: Активировать пользователя (GET)
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Список активных пользователей
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivateResponse'
+    post:
+      summary: Активировать пользователя (POST)
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Список активных пользователей
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivateResponse'
+  /slow:
+    get:
+      summary: Запустить фоновую задачу
+      responses:
+        '202':
+          description: Задача принята в обработку
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledResponse'
+  /wrong:
+    get:
+      summary: Демонстрация обработки ошибки
+      responses:
+        '500':
+          description: Ошибка деления на ноль
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    AddUserRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          minLength: 1
+    AddUserResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+    ActivateResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        active:
+          type: array
+          items:
+            type: integer
+    ScheduledResponse:
+      type: object
+      properties:
+        status:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        msg:
+          type: string
+        detail:
+          type: string
