@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  memory-bot:
+    build: .
+    container_name: memory_bot
+    env_file:
+      - .env
+    volumes:
+      - ./bot_database.db:/app/bot_database.db
+    restart: unless-stopped
