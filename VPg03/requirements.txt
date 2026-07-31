@@ -1,0 +1,5 @@
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langgraph>=0.2.0
+langgraph-checkpoint-sqlite>=1.0.0   # для SqliteSaver
+python-dotenv>=1.0.0
