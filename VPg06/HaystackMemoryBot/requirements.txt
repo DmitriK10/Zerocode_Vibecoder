@@ -1,0 +1,8 @@
+telebot
+python-dotenv
+haystack-ai>=2.28.0
+pinecone-haystack
+openai
+httpx
+pinecone
+sentence-transformers
