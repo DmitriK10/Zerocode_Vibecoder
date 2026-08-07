@@ -17,9 +17,11 @@ class DogImageAnalyzerComponent:
                 api_key=OPENAI_API_KEY,
                 base_url=OPENAI_BASE_URL
             )
+            # Улучшенный промпт
             prompt = (
-                "Опиши породу собаки на этом изображении. "
-                "Расскажи краткую историю происхождения породы."
+                "Посмотри на изображение. Если на нём есть собака, опиши её породу и кратко расскажи историю происхождения породы. "
+                "Если на изображении нет собаки, просто скажи: «На этом изображении нет собаки». "
+                "Не описывай людей, даже если они присутствуют на фото."
             )
             response = client.chat.completions.create(
                 model=OPENAI_MODEL,
@@ -40,6 +42,17 @@ class DogImageAnalyzerComponent:
                 max_tokens=300
             )
             analysis = response.choices[0].message.content
+
+            # Проверяем, не содержит ли ответ отказ
+            refusal_phrases = [
+                "не могу помочь",
+                "не могу идентифицировать",
+                "не могу описать",
+                "извините",
+                "не могу ответить"
+            ]
+            if any(phrase in analysis.lower() for phrase in refusal_phrases):
+                analysis = "🐶 На этом изображении, похоже, нет собаки, или я не смог её распознать. Но вот картинка!"
             return {"analysis": analysis}
         except Exception as e:
             return {"analysis": f"Ошибка анализа: {str(e)}"}

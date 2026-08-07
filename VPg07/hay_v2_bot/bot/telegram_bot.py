@@ -202,8 +202,10 @@ def handle_text(message: Message):
     text = message.text.lower()
     logger.info(f"Текст от {user_id}: {text[:50]}...")
 
+    # 🔥 Факты о кошках – теперь на русском (перевод через OpenAI)
     if "кошк" in text or "кот" in text:
-        bot.reply_to(message, cat_fact.run()["fact"])
+        result = cat_fact.run(language="ru")  # всегда переводим на русский
+        bot.reply_to(message, result["fact"])
         return
 
     if "собак" in text or "пес" in text or "щен" in text:
@@ -218,12 +220,17 @@ def handle_text(message: Message):
     if "погод" in text or "температур" in text:
         import re
         city_match = re.search(r'в\s+([А-Яа-яЁё\s\-]+)', text)
-        city = city_match.group(1).strip() if city_match else "Москва"
+        if city_match:
+            city = city_match.group(1).strip()
+        else:
+            city = "Москва"  # город по умолчанию
+
+        # Погода – нормализация выполняется внутри weather.py
         weather_report = weather.run(city=city)["weather_report"]
         bot.reply_to(message, weather_report)
         return
 
-    # RAG
+    # RAG-запрос
     try:
         message_context.save_user_message(user_id, text)
         msg_context = message_context.retrieve_context(user_id, text)
