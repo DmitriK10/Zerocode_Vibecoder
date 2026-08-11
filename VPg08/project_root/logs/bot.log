@@ -1,0 +1,1466 @@
+
+2026-08-11 20:48:19,241 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+2026-08-11 20:48:19,249 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\http\client.py", line 1374, in getresponse
+    response.begin()
+  File "C:\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\http\client.py", line 287, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+
+2026-08-11 20:48:42,280 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8bd0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:48:42,282 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8bd0>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8bd0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8bd0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:49:05,300 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab3d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:49:05,302 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab3d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab3d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab3d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:49:28,321 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab210>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:49:28,323 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab210>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab210>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ab210>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:49:51,333 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357f90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:49:51,335 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357f90>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357f90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357f90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:50:14,344 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c5a50>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:50:14,346 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c5a50>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c5a50>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c5a50>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:50:37,355 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cc550>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:50:37,357 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cc550>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cc550>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cc550>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:51:00,364 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357d90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:51:00,365 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357d90>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357d90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f20357d90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:51:23,383 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ccd90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:51:23,385 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ccd90>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ccd90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203ccd90>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:51:46,416 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf910>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:51:46,418 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf910>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf910>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf910>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:52:09,432 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf4d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:52:09,434 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf4d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf4d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203cf4d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:52:32,443 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8d10>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:52:32,445 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8d10>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8d10>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203a8d10>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:52:55,460 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c59d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:52:55,462 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c59d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c59d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f203c59d0>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:53:18,481 - TeleBot - ERROR - Infinity polling exception: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f1d762290>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+2026-08-11 20:53:18,482 - TeleBot - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f1d762290>, 'Connection to api.telegram.org timed out. (connect timeout=20)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f1d762290>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1090, in infinity_polling
+    self.polling(non_stop=True, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1178, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1253, in __threaded_polling
+    raise e
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 1214, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 111, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 676, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\__init__.py", line 648, in get_updates
+    json_updates = apihelper.get_updates(
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 328, in get_updates
+    return _make_request(token, method_url, params=payload)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\telebot\apihelper.py", line 162, in _make_request
+    result = _get_req_session().request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADATA\Documents\Zerocode_Vibecoder\Vpg08\project_root\venv\Lib\site-packages\requests\adapters.py", line 717, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8891204838:***********************************/getUpdates?offset=319380369&timeout=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.telegram.org', port=443) at 0x22f1d762290>, 'Connection to api.telegram.org timed out. (connect timeout=20)'))
+
+2026-08-11 20:53:24,487 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 20:53:24,487 - TeleBot - ERROR - Break infinity polling
+2026-08-11 22:51:07,191 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 22:51:07,213 - __main__ - INFO - Starting bot...
+2026-08-11 22:51:39,009 - pipelines - INFO - Indexing 1 documents
+2026-08-11 22:51:39,034 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 22:51:41,486 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 22:51:41,505 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 22:51:41,528 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 22:51:42,564 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 22:51:42,571 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg06. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 22:51:42,572 - pinecone.client.indexes - INFO - Describing index 'zerovpg06'
+2026-08-11 22:51:43,263 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg06 "HTTP/1.1 200 OK"
+2026-08-11 22:51:43,276 - pinecone.index - INFO - Index client created for host https://zerovpg06-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 22:51:43,277 - pinecone.index - INFO - Describing index stats
+2026-08-11 22:51:43,989 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg06 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 22:51:44,498 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 22:51:44,569 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 22:51:46,682 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 22:51:48,535 - __main__ - INFO - Total documents in Pinecone: 43
+2026-08-11 22:51:48,535 - __main__ - INFO - Found 1 documents for session 4c0a98fa
+2026-08-11 22:51:48,552 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 22:51:48,553 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 22:51:50,258 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 22:52:10,431 - pipelines - INFO - Indexing 1 documents
+2026-08-11 22:52:10,431 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 22:52:11,108 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 22:52:11,112 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 22:52:12,048 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?⁩...
+2026-08-11 22:52:12,048 - __main__ - INFO - Mention detected!
+2026-08-11 22:52:12,062 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 22:52:12,907 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 22:52:12,937 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 22:52:12,953 - __main__ - ERROR - Search error: The following component failed to run:
+Component name: 'retriever'
+Component type: 'PineconeEmbeddingRetriever'
+Error: Invalid filter syntax. See https://docs.haystack.deepset.ai/docs/metadata-filtering for details.
+2026-08-11 22:58:17,936 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 22:58:17,936 - TeleBot - ERROR - Break infinity polling
+2026-08-11 22:58:23,481 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 22:58:23,502 - __main__ - INFO - Starting bot...
+2026-08-11 22:58:55,684 - pipelines - INFO - Indexing 1 documents
+2026-08-11 22:58:55,702 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 22:58:56,850 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 22:58:56,871 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 22:58:56,881 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 22:58:57,733 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 22:58:57,735 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg06. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 22:58:57,735 - pinecone.client.indexes - INFO - Describing index 'zerovpg06'
+2026-08-11 22:58:57,916 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg06 "HTTP/1.1 200 OK"
+2026-08-11 22:58:57,924 - pinecone.index - INFO - Index client created for host https://zerovpg06-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 22:58:57,925 - pinecone.index - INFO - Describing index stats
+2026-08-11 22:58:58,701 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg06 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 22:58:59,132 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 22:58:59,203 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 22:58:59,781 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 22:59:00,547 - __main__ - INFO - Total documents in Pinecone: 45
+2026-08-11 22:59:00,547 - __main__ - INFO - Found 1 documents for session e5842c29
+2026-08-11 22:59:00,562 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 22:59:00,563 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 22:59:03,038 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 22:59:21,796 - pipelines - INFO - Indexing 1 documents
+2026-08-11 22:59:21,797 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 22:59:22,419 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 22:59:22,434 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 22:59:23,250 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?...
+2026-08-11 22:59:23,250 - __main__ - INFO - Mention detected!
+2026-08-11 22:59:23,265 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 22:59:23,845 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 22:59:23,860 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 22:59:23,861 - pinecone.index - INFO - Querying index with top_k=10
+2026-08-11 23:03:14,707 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 23:03:14,707 - TeleBot - ERROR - Break infinity polling
+2026-08-11 23:03:21,521 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 23:03:21,541 - __main__ - INFO - Starting bot...
+2026-08-11 23:04:03,005 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:04:03,026 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:04:04,195 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:04:04,209 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:04:04,218 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 23:04:05,332 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 23:04:05,333 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg06. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 23:04:05,333 - pinecone.client.indexes - INFO - Describing index 'zerovpg06'
+2026-08-11 23:04:05,961 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg06 "HTTP/1.1 200 OK"
+2026-08-11 23:04:05,969 - pinecone.index - INFO - Index client created for host https://zerovpg06-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 23:04:05,970 - pinecone.index - INFO - Describing index stats
+2026-08-11 23:04:06,679 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg06 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 23:04:07,119 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 23:04:07,196 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 23:04:09,046 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 23:04:09,785 - __main__ - INFO - Total documents in Pinecone: 47
+2026-08-11 23:04:09,785 - __main__ - INFO - Found 1 documents for session f6b1ddd1
+2026-08-11 23:04:09,802 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 23:04:09,802 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 23:04:12,009 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 23:04:36,263 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:04:36,263 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:04:36,929 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:04:36,947 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:04:37,697 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?⁩...
+2026-08-11 23:04:37,697 - __main__ - INFO - Mention detected!
+2026-08-11 23:04:37,714 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 23:04:38,416 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:04:38,433 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 23:04:38,434 - pinecone.index - INFO - Querying index with top_k=10
+2026-08-11 23:08:12,043 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 23:08:12,043 - TeleBot - ERROR - Break infinity polling
+2026-08-11 23:08:17,178 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 23:08:17,199 - __main__ - INFO - Starting bot...
+2026-08-11 23:09:08,062 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:09:08,082 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:09:09,126 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:09:09,138 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:09:09,147 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 23:09:10,013 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 23:09:10,015 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg06. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 23:09:10,015 - pinecone.client.indexes - INFO - Describing index 'zerovpg06'
+2026-08-11 23:09:10,673 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg06 "HTTP/1.1 200 OK"
+2026-08-11 23:09:10,682 - pinecone.index - INFO - Index client created for host https://zerovpg06-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 23:09:10,682 - pinecone.index - INFO - Describing index stats
+2026-08-11 23:09:11,327 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg06 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 23:09:11,716 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 23:09:11,796 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 23:09:13,759 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 23:09:14,581 - __main__ - INFO - Total documents in Pinecone: 49
+2026-08-11 23:09:14,581 - __main__ - INFO - Found 1 documents for session 9f3087f1
+2026-08-11 23:09:14,598 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 23:09:14,599 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 23:09:16,176 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 23:09:40,595 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:09:40,595 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:09:41,850 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:09:41,855 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:09:42,651 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?⁩...
+2026-08-11 23:09:42,652 - __main__ - INFO - Mention detected!
+2026-08-11 23:09:42,669 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 23:09:43,249 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:09:43,265 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 23:09:43,265 - pinecone.index - INFO - Querying index with top_k=10
+2026-08-11 23:16:05,418 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 23:16:05,419 - TeleBot - ERROR - Break infinity polling
+2026-08-11 23:31:24,693 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 23:31:24,717 - __main__ - INFO - Starting bot...
+2026-08-11 23:31:59,144 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 23:31:59,144 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:31:59,160 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:32:00,776 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:32:00,796 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:32:00,808 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 23:32:02,083 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 23:32:02,085 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg06. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 23:32:02,085 - pinecone.client.indexes - INFO - Describing index 'zerovpg06'
+2026-08-11 23:32:02,271 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg06 "HTTP/1.1 200 OK"
+2026-08-11 23:32:02,280 - pinecone.index - INFO - Index client created for host https://zerovpg06-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 23:32:02,280 - pinecone.index - INFO - Describing index stats
+2026-08-11 23:32:02,979 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg06 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 23:32:03,410 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 23:32:06,699 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 23:32:07,699 - __main__ - INFO - Total documents in Pinecone: 51
+2026-08-11 23:32:07,699 - __main__ - INFO - Found 1 documents for session 07f82ef8
+2026-08-11 23:32:07,720 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 23:32:07,720 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 23:32:10,217 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 23:32:32,379 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:32:32,380 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:32:32,973 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:32:32,977 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:32:33,773 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?...
+2026-08-11 23:32:33,773 - __main__ - INFO - Mention detected!
+2026-08-11 23:32:33,789 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 23:32:34,404 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:32:34,419 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 23:32:34,434 - __main__ - ERROR - Search error: The following component failed to run:
+Component name: 'retriever'
+Component type: 'PineconeEmbeddingRetriever'
+Error: Invalid filter syntax. See https://docs.haystack.deepset.ai/docs/metadata-filtering for details.
+2026-08-11 23:36:53,409 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 23:36:53,410 - TeleBot - ERROR - Break infinity polling
+2026-08-11 23:37:01,809 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 23:37:01,829 - __main__ - INFO - Starting bot...
+2026-08-11 23:37:38,063 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 23:37:38,063 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:37:38,082 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:37:39,142 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:37:39,158 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:37:39,166 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 23:37:40,219 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 23:37:40,222 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg08. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 23:37:40,222 - pinecone.client.indexes - INFO - Describing index 'zerovpg08'
+2026-08-11 23:37:40,809 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg08 "HTTP/1.1 200 OK"
+2026-08-11 23:37:40,817 - pinecone.index - INFO - Index client created for host https://zerovpg08-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 23:37:40,817 - pinecone.index - INFO - Describing index stats
+2026-08-11 23:37:41,376 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg08 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 23:37:41,907 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 23:37:44,830 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 23:37:45,090 - __main__ - INFO - Total documents in Pinecone: 1
+2026-08-11 23:37:45,091 - __main__ - INFO - Found 1 documents for session d90887de
+2026-08-11 23:37:45,108 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 23:37:45,109 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 23:37:47,177 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 23:38:00,155 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:38:00,156 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:38:00,893 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:38:00,912 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:38:01,880 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?...
+2026-08-11 23:38:01,881 - __main__ - INFO - Mention detected!
+2026-08-11 23:38:01,899 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 23:38:02,697 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:38:02,724 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 23:38:02,741 - __main__ - ERROR - Search error: The following component failed to run:
+Component name: 'retriever'
+Component type: 'PineconeEmbeddingRetriever'
+Error: Invalid filter syntax. See https://docs.haystack.deepset.ai/docs/metadata-filtering for details.
+2026-08-11 23:45:31,088 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 23:45:31,088 - TeleBot - ERROR - Break infinity polling
+2026-08-11 23:49:47,696 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 23:49:47,717 - __main__ - INFO - Starting bot...
+2026-08-11 23:50:37,368 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 23:50:37,369 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:50:37,389 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:50:38,502 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:50:38,523 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:50:38,533 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 23:50:39,541 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 23:50:39,543 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg08. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 23:50:39,543 - pinecone.client.indexes - INFO - Describing index 'zerovpg08'
+2026-08-11 23:50:40,235 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg08 "HTTP/1.1 200 OK"
+2026-08-11 23:50:40,244 - pinecone.index - INFO - Index client created for host https://zerovpg08-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 23:50:40,244 - pinecone.index - INFO - Describing index stats
+2026-08-11 23:50:40,898 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg08 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 23:50:41,527 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Аргументы за суши: "Предлагаю заказать суши на ужи...
+2026-08-11 23:50:45,615 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 23:50:46,001 - __main__ - INFO - Total documents in Pinecone: 3
+2026-08-11 23:50:46,001 - __main__ - INFO - Found 1 documents for session c52c10da
+2026-08-11 23:50:46,019 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 23:50:46,019 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 23:50:49,174 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 23:51:09,861 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:51:09,862 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:51:10,576 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:51:10,595 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:51:11,372 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?...
+2026-08-11 23:51:11,372 - __main__ - INFO - Mention detected!
+2026-08-11 23:51:11,393 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 23:51:12,001 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:51:12,030 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 23:51:12,031 - pinecone.index - INFO - Querying index with top_k=50
+2026-08-11 23:53:39,433 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-11 23:53:39,433 - TeleBot - ERROR - Break infinity polling
+2026-08-11 23:53:45,360 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-11 23:53:45,380 - __main__ - INFO - Starting bot...
+2026-08-11 23:54:25,653 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-11 23:54:25,653 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:54:25,670 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:54:26,743 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:54:26,764 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:54:26,774 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-11 23:54:27,648 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-11 23:54:27,650 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg08. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-11 23:54:27,650 - pinecone.client.indexes - INFO - Describing index 'zerovpg08'
+2026-08-11 23:54:27,922 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg08 "HTTP/1.1 200 OK"
+2026-08-11 23:54:27,931 - pinecone.index - INFO - Index client created for host https://zerovpg08-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-11 23:54:27,931 - pinecone.index - INFO - Describing index stats
+2026-08-11 23:54:28,616 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg08 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-11 23:54:29,212 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-11 23:54:33,917 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-11 23:54:34,388 - __main__ - INFO - Total documents in Pinecone: 5
+2026-08-11 23:54:34,388 - __main__ - INFO - Found 1 documents for session 92f832d8
+2026-08-11 23:54:34,403 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-11 23:54:34,404 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-11 23:54:38,221 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-11 23:55:01,455 - pipelines - INFO - Indexing 1 documents
+2026-08-11 23:55:01,456 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-11 23:55:02,041 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:55:02,054 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-11 23:55:02,822 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?...
+2026-08-11 23:55:02,822 - __main__ - INFO - Mention detected!
+2026-08-11 23:55:02,838 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-11 23:55:03,578 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-11 23:55:03,601 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-11 23:55:03,601 - pinecone.index - INFO - Querying index with top_k=50
+2026-08-12 00:02:58,273 - TeleBot - ERROR - Infinity polling: polling exited
+2026-08-12 00:02:58,273 - TeleBot - ERROR - Break infinity polling
+2026-08-12 00:10:57,829 - haystack.components.builders.prompt_builder - WARNING - PromptBuilder has 1 prompt variables, but `required_variables` is not set. By default, all prompt variables are treated as optional, which may lead to unintended behavior in multi-branch pipelines. To avoid unexpected execution, ensure that variables intended to be required are explicitly set in `required_variables`.
+2026-08-12 00:10:57,851 - __main__ - INFO - Starting bot...
+2026-08-12 00:11:28,885 - __main__ - INFO - Bot username set to: @ZeroVPg08_bot
+2026-08-12 00:11:28,885 - pipelines - INFO - Indexing 1 documents
+2026-08-12 00:11:28,902 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-12 00:11:29,989 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-12 00:11:30,008 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-12 00:11:30,018 - pinecone.client.indexes - INFO - Listing indexes
+2026-08-12 00:11:31,071 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes "HTTP/1.1 200 OK"
+2026-08-12 00:11:31,072 - haystack_integrations.document_stores.pinecone.document_store - INFO - Connecting to existing index zerovpg08. `dimension`, `spec`, and `metric` will be ignored.
+2026-08-12 00:11:31,072 - pinecone.client.indexes - INFO - Describing index 'zerovpg08'
+2026-08-12 00:11:31,206 - httpx - INFO - HTTP Request: GET https://api.pinecone.io/indexes/zerovpg08 "HTTP/1.1 200 OK"
+2026-08-12 00:11:31,215 - pinecone.index - INFO - Index client created for host https://zerovpg08-ykilia5.svc.aped-4627-b74a.pinecone.io
+2026-08-12 00:11:31,215 - pinecone.index - INFO - Describing index stats
+2026-08-12 00:11:31,821 - haystack_integrations.document_stores.pinecone.document_store - WARNING - Dimension of index zerovpg08 is 1536, but 768 was specified. The specified dimension will be ignored.If you need an index with a different dimension, please create a new one.
+2026-08-12 00:11:32,248 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): Предлагаю заказать суши на ужин."
+"Я за пиццу, она...
+2026-08-12 00:11:33,311 - pinecone.index - INFO - Querying index with top_k=1000
+2026-08-12 00:11:33,617 - __main__ - INFO - Total documents in Pinecone: 1
+2026-08-12 00:11:33,617 - __main__ - INFO - Found 1 documents for session e0c7bcf9
+2026-08-12 00:11:33,634 - haystack.core.pipeline.pipeline - INFO - Running component prompt_builder
+2026-08-12 00:11:33,635 - haystack.core.pipeline.pipeline - INFO - Running component generator
+2026-08-12 00:11:35,800 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-12 00:11:48,199 - pipelines - INFO - Indexing 1 documents
+2026-08-12 00:11:48,200 - haystack.core.pipeline.pipeline - INFO - Running component embedder
+2026-08-12 00:11:48,783 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-12 00:11:48,802 - haystack.core.pipeline.pipeline - INFO - Running component writer
+2026-08-12 00:11:49,588 - __main__ - INFO - Indexed message from DmitriiKp (chat 457041208): @ZeroVPg08_bot  что мы обсуждали про ужин?...
+2026-08-12 00:11:49,588 - __main__ - INFO - Mention detected!
+2026-08-12 00:11:49,604 - haystack.core.pipeline.pipeline - INFO - Running component text_embedder
+2026-08-12 00:11:50,169 - httpx - INFO - HTTP Request: POST https://api.proxyapi.ru/openai/v1/embeddings "HTTP/1.1 200 OK"
+2026-08-12 00:11:50,188 - haystack.core.pipeline.pipeline - INFO - Running component retriever
+2026-08-12 00:11:50,189 - pinecone.index - INFO - Querying index with top_k=50
