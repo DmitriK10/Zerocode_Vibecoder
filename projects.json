@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Телеграм-бот для заказа пиццы",
+    "description": "Бот с inline-клавиатурой, корзиной и интеграцией с платежной системой.",
+    "technologies": ["Python", "aiogram", "SQLite"],
+    "image": "static/images/pizza_bot.jpg",
+    "demo_url": "https://t.me/pizza_bot_demo",
+    "github_url": "https://github.com/DmitriK10/pizza_bot"
+  },
+  {
+    "id": 2,
+    "title": "Сайт-портфолио вайб-кодера",
+    "description": "Минималистичный одностраничник в стиле Apple с анимациями.",
+    "technologies": ["Flask", "HTML", "CSS", "JS"],
+    "image": "static/images/portfolio_site.jpg",
+    "demo_url": "https://dmitrik10.ru",
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder"
+  },
+  {
+    "id": 3,
+    "title": "Автоматизация Excel-отчетов",
+    "description": "Скрипт, который собирает данные из нескольких таблиц и формирует сводный отчет в PDF.",
+    "technologies": ["Python", "pandas", "openpyxl", "reportlab"],
+    "image": "static/images/excel_auto.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/excel_automation"
+  }
+  // Добавь свои реальные проекты – минимум 5-6 для впечатляющего портфолио.
+]

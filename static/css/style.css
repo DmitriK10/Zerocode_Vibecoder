@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    line-height: 1.6;
+}
+.hero {
+    text-align: center;
+    padding: 100px 20px 80px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+}
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+}
+.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #86868b;
+    margin-bottom: 30px;
+}
+.cta .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #0071e3;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0 8px;
+}
+.cta .btn-outline {
+    background: transparent;
+    border: 2px solid #0071e3;
+    color: #0071e3;
+}
+.cta .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.projects {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+.projects h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+.card-content {
+    padding: 20px;
+}
+.card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+.card-content p {
+    color: #6e6e73;
+    font-size: 0.95rem;
+}
+.tech-tags {
+    margin: 15px 0;
+}
+.tag {
+    display: inline-block;
+    background: #e8e8ed;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    margin: 3px 4px 3px 0;
+}
+.card-links a {
+    display: inline-block;
+    margin-right: 15px;
+    color: #0071e3;
+    text-decoration: none;
+    font-weight: 600;
+}
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #86868b;
+}
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2.8rem; }
+}
