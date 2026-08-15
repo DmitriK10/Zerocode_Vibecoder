@@ -1,30 +1,74 @@
 [
   {
     "id": 1,
-    "title": "Телеграм-бот для заказа пиццы",
-    "description": "Бот с inline-клавиатурой, корзиной и интеграцией с платежной системой.",
-    "technologies": ["Python", "aiogram", "SQLite"],
-    "image": "static/images/pizza_bot.jpg",
-    "demo_url": "https://t.me/pizza_bot_demo",
-    "github_url": "https://github.com/DmitriK10/pizza_bot"
+    "title": "Калькулятор скидок (DiscountCalculator)",
+    "description": "Консольное приложение для расчёта скидок с сохранением истории в SQLite. Позволяет вводить сумму и процент скидки, вычислять итоговую цену и хранить все расчёты в базе данных.",
+    "technologies": ["Python", "SQLite", "ООП"],
+    "image": "static/images/discount_calculator.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPa06/DiscountCalculator"
   },
   {
     "id": 2,
-    "title": "Сайт-портфолио вайб-кодера",
-    "description": "Минималистичный одностраничник в стиле Apple с анимациями.",
-    "technologies": ["Flask", "HTML", "CSS", "JS"],
-    "image": "static/images/portfolio_site.jpg",
-    "demo_url": "https://dmitrik10.ru",
-    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder"
+    "title": "TodoApp — Веб-приложение для задач",
+    "description": "Веб-приложение для управления задачами с аутентификацией. Пользователи могут создавать, редактировать, удалять задачи и отмечать их выполненными.",
+    "technologies": ["Flask", "SQLAlchemy", "Jinja2", "Bootstrap"],
+    "image": "static/images/todoapp.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPb04/TodoApp"
   },
   {
     "id": 3,
-    "title": "Автоматизация Excel-отчетов",
-    "description": "Скрипт, который собирает данные из нескольких таблиц и формирует сводный отчет в PDF.",
-    "technologies": ["Python", "pandas", "openpyxl", "reportlab"],
-    "image": "static/images/excel_auto.jpg",
+    "title": "task_bot — Телеграм-бот для задач",
+    "description": "Телеграм-бот для создания и отслеживания задач. Умеет добавлять задачи, показывать список, отмечать выполненные и удалять.",
+    "technologies": ["Aiogram", "SQLite"],
+    "image": "static/images/task_bot.jpg",
     "demo_url": null,
-    "github_url": "https://github.com/DmitriK10/excel_automation"
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPb06/task_bot"
+  },
+  {
+    "id": 4,
+    "title": "pdf_generator — Генератор PDF-отчётов",
+    "description": "Генератор PDF-отчётов из данных (например, из CSV или базы данных). Создаёт красивые структурированные отчёты с таблицами и графиками.",
+    "technologies": ["Python", "ReportLab", "FPDF"],
+    "image": "static/images/pdf_generator.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPa05/pdf_generator"
+  },
+  {
+    "id": 5,
+    "title": "water_reminder — Бот-напоминалка о воде",
+    "description": "Телеграм-бот, который напоминает пить воду по расписанию. Настраивается интервал напоминаний, есть команды для старта/остановки.",
+    "technologies": ["python-telegram-bot"],
+    "image": "static/images/water_reminder.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPf03/water_reminder"
+  },
+  {
+    "id": 6,
+    "title": "fastapi-app — REST API на FastAPI",
+    "description": "REST API на FastAPI с автоматической документацией Swagger. Реализует CRUD для управления сущностями (например, пользователями или товарами).",
+    "technologies": ["FastAPI", "Pydantic", "Uvicorn"],
+    "image": "static/images/fastapi_app.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPe03/fastapi-app"
+  },
+  {
+    "id": 7,
+    "title": "Loki+Grafana — Мониторинг и логи",
+    "description": "Настройка мониторинга для приложений: сбор логов через Loki и визуализация в Grafana. Всё упаковано в Docker.",
+    "technologies": ["Loki", "Grafana", "Docker"],
+    "image": "static/images/loki_grafana.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPe05/Loki+Grafana"
+  },
+  {
+    "id": 8,
+    "title": "lead_mvp — MVP для управления лидами",
+    "description": "MVP-система для управления лидами (клиентскими заявками). Позволяет добавлять лиды, назначать ответственных, менять статусы.",
+    "technologies": ["Python", "Базы данных"],
+    "image": "static/images/lead_mvp.jpg",
+    "demo_url": null,
+    "github_url": "https://github.com/DmitriK10/Zerocode_Vibecoder/tree/main/VPk01.1/lead_mvp"
   }
-  // Добавь свои реальные проекты – минимум 5-6 для впечатляющего портфолио.
 ]
