@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pydantic
+google-api-python-client
+google-auth-oauthlib
+google-auth
+requests
+python-dotenv
+faker
+pytest
+pytest-asyncio
+httpx
