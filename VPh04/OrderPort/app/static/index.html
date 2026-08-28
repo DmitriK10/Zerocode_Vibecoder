@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка - Айхор Хостинг</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 650px; margin: 40px auto; padding: 20px; background: #f8f9fa; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        label { font-weight: 600; display: block; margin-top: 12px; }
+        input, textarea, select { width: 100%; padding: 10px; margin: 6px 0 4px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        button { background: #007bff; color: white; border: none; padding: 14px 28px; margin-top: 20px; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; }
+        button:hover { background: #0056b3; }
+        #result { margin-top: 20px; padding: 12px; border-radius: 6px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .required:after { content: " *"; color: red; }
+    </style>
+</head>
+<body>
+    <h1>Оставить заявку</h1>
+    <form id="leadForm">
+        <label class="required">Имя</label>
+        <input type="text" id="name" placeholder="Введите ваше имя" required>
+
+        <label class="required">Телефон</label>
+        <input type="tel" id="phone" placeholder="+7 (999) 123-45-67" required>
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="example@mail.com">
+
+        <label>Информация о бизнесе</label>
+        <textarea id="business_info" rows="3" placeholder="Опишите ваш бизнес"></textarea>
+
+        <label>Бюджет</label>
+        <input type="text" id="budget" placeholder="например, 500 000 руб.">
+
+        <label>Удобный способ связи</label>
+        <select id="preferred_contact">
+            <option value="phone">Телефон</option>
+            <option value="email">Email</option>
+            <option value="telegram">Telegram</option>
+            <option value="whatsapp">WhatsApp</option>
+        </select>
+
+        <label>Комментарии</label>
+        <textarea id="comments" rows="3" placeholder="Дополнительная информация"></textarea>
+
+        <button type="submit">Отправить заявку</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const startTime = performance.now();
+
+        document.getElementById('leadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const businessInfo = document.getElementById('business_info').value.trim();
+            const budget = document.getElementById('budget').value.trim();
+            const preferredContact = document.getElementById('preferred_contact').value;
+            const comments = document.getElementById('comments').value.trim();
+
+            if (!name || !phone) {
+                document.getElementById('result').innerHTML = `<div class="error">Пожалуйста, заполните имя и телефон.</div>`;
+                return;
+            }
+
+            const payload = {
+                contact_data: {
+                    name: name,
+                    phone: phone,
+                    email: email || null
+                },
+                business_info: businessInfo || null,
+                budget: budget || null,
+                preferred_contact: preferredContact,
+                comments: comments || null,
+                user_agent: navigator.userAgent,
+                referer: document.referrer || '',
+                session_id: localStorage.getItem('session_id') || (() => {
+                    const sid = 'sess_' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem('session_id', sid);
+                    return sid;
+                })(),
+                page_load_time: performance.now() - startTime
+            };
+
+            try {
+                const resp = await fetch('/api/v1/leads/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await resp.json();
+                if (resp.ok) {
+                    document.getElementById('result').innerHTML = `<div class="success">✅ Заявка принята! ID: ${data.id}</div>`;
+                    document.getElementById('leadForm').reset();
+                } else {
+                    document.getElementById('result').innerHTML = `<div class="error">❌ Ошибка: ${data.detail || 'Неизвестная ошибка'}</div>`;
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = `<div class="error">❌ Ошибка сети: ${err.message}</div>`;
+            }
+        });
+    </script>
+</body>
+</html>
