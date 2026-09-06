@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель OrderPort</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 20px; background: #f0f2f5; }
+        .container { max-width: 1200px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; }
+        .nav { margin-bottom: 20px; }
+        .nav button { padding: 10px 20px; margin-right: 10px; border: none; background: #007bff; color: white; border-radius: 4px; cursor: pointer; }
+        .nav button.active { background: #0056b3; }
+        .hidden { display: none; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f8f9fa; }
+        form { margin: 10px 0; }
+        input, select, textarea { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-danger { background: #dc3545; }
+        .btn-primary { background: #007bff; }
+        #auth-section, #admin-section { margin-top: 20px; }
+        .auth-card { max-width: 400px; margin: auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        #stats-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; display: none; justify-content: center; align-items: center; }
+        .stats-content { background: white; padding: 20px; border-radius: 8px; max-width: 800px; width: 90%; max-height: 80vh; overflow: auto; }
+        .close-btn { float: right; cursor: pointer; font-size: 24px; }
+        .priority-high { color: red; font-weight: bold; }
+        .priority-medium { color: orange; font-weight: bold; }
+        .priority-low { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Админ-панель OrderPort</h1>
+        <div id="auth-section">
+            <div class="auth-card">
+                <h2 id="auth-title">Вход</h2>
+                <div id="register-link">Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрироваться</a></div>
+                <form id="login-form">
+                    <input type="text" id="login-username" placeholder="Логин" required>
+                    <input type="password" id="login-password" placeholder="Пароль" required>
+                    <button type="submit" class="btn-primary">Войти</button>
+                </form>
+                <form id="register-form" class="hidden">
+                    <input type="text" id="reg-username" placeholder="Логин" required>
+                    <input type="password" id="reg-password" placeholder="Пароль (минимум 6 символов)" minlength="6" maxlength="72" required>
+                    <input type="email" id="reg-email" placeholder="Email (опционально)">
+                    <button type="submit" class="btn-primary">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="admin-section" class="hidden">
+            <div class="nav">
+                <button class="active" onclick="showTab('leads')">Заявки</button>
+                <button onclick="showTab('services')">Услуги</button>
+                <button onclick="showTab('metrics')">Метрики</button>
+                <button onclick="logout()" class="btn-danger">Выйти</button>
+            </div>
+            <div id="leads-tab">
+                <h2>Заявки <button class="btn-primary" onclick="loadLeads(true)">Сортировать по приоритету</button></h2>
+                <table id="leads-table">
+                    <thead>
+                        <tr><th>ID</th><th>Имя</th><th>Телефон</th><th>Бюджет</th><th>Приоритет</th><th>Действия</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="lead-details"></div>
+            </div>
+            <div id="services-tab" class="hidden">
+                <h2>Услуги</h2>
+                <form id="service-form">
+                    <input type="text" id="service-name" placeholder="Название услуги" required>
+                    <input type="text" id="service-budget" placeholder="Бюджетный диапазон" required>
+                    <button type="submit">Добавить услугу</button>
+                </form>
+                <table id="services-table">
+                    <thead><tr><th>ID</th><th>Название</th><th>Бюджет</th><th>Действия</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="metrics-tab" class="hidden">
+                <h2>Метрики поведения пользователей</h2>
+                <button class="btn-primary" onclick="openStatsModal()">Статистика</button>
+                <div id="metrics-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно статистики -->
+    <div id="stats-modal">
+        <div class="stats-content">
+            <span class="close-btn" onclick="closeStatsModal()">&times;</span>
+            <h2>Статистика пользователей</h2>
+            <div id="stats-content"></div>
+        </div>
+    </div>
+
+    <script>
+        let token = localStorage.getItem('token');
+        let currentAdmin = null;
+
+        // Проверяем, зарегистрирован ли хоть один админ
+        async function checkAdminRegistered() {
+            const resp = await fetch('/api/auth/check');
+            const data = await resp.json();
+            if (!data.registered) {
+                document.getElementById('register-link').style.display = 'block';
+                document.getElementById('auth-title').textContent = 'Регистрация первого администратора';
+                showRegister();
+            } else {
+                document.getElementById('register-link').style.display = 'none';
+            }
+        }
+
+        function showRegister() {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+            document.getElementById('auth-title').textContent = 'Регистрация';
+        }
+
+        function showLogin() {
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('auth-title').textContent = 'Вход';
+        }
+
+        async function login(e) {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('password', password);
+            const resp = await fetch('/api/auth/login', {
+                method: 'POST',
+                body: formData
+            });
+            if (resp.ok) {
+                const data = await resp.json();
+                token = data.access_token;
+                localStorage.setItem('token', token);
+                await loadAdmin();
+            } else {
+                alert('Ошибка входа: ' + (await resp.json()).detail);
+            }
+        }
+
+        async function register(e) {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+            const email = document.getElementById('reg-email').value;
+            if (password.length < 6) {
+                alert('Пароль должен быть не менее 6 символов.');
+                return;
+            }
+            const resp = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, email })
+            });
+            if (resp.ok) {
+                alert('Администратор зарегистрирован. Теперь войдите.');
+                showLogin();
+                document.getElementById('login-username').value = username;
+            } else {
+                const err = await resp.json();
+                alert('Ошибка регистрации: ' + (err.detail || 'Неизвестная ошибка'));
+            }
+        }
+
+        async function loadAdmin() {
+            if (!token) return;
+            const resp = await fetch('/api/auth/me', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (resp.ok) {
+                currentAdmin = await resp.json();
+                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('admin-section').classList.remove('hidden');
+                loadLeads();
+                loadServices();
+                loadMetrics();
+            } else {
+                localStorage.removeItem('token');
+                token = null;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            token = null;
+            location.reload();
+        }
+
+        function showTab(tab) {
+            ['leads', 'services', 'metrics'].forEach(t => {
+                document.getElementById(t + '-tab').classList.add('hidden');
+            });
+            document.getElementById(tab + '-tab').classList.remove('hidden');
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Заявки
+        async function loadLeads(sortByPriority = false) {
+            const resp = await fetch(`/api/v1/leads/?sort_by_priority=${sortByPriority}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const leads = await resp.json();
+            const tbody = document.querySelector('#leads-table tbody');
+            tbody.innerHTML = '';
+            leads.forEach(lead => {
+                const tr = document.createElement('tr');
+                const priority = lead.priority || 0;
+                const priorityClass = priority >= 70 ? 'priority-high' : (priority >= 40 ? 'priority-medium' : 'priority-low');
+                tr.innerHTML = `
+                    <td>${lead.id}</td>
+                    <td>${lead.contact_data.name || '-'}</td>
+                    <td>${lead.contact_data.phone || '-'}</td>
+                    <td>${lead.budget || '-'}</td>
+                    <td class="${priorityClass}">${priority}</td>
+                    <td><button class="btn-primary" onclick="viewLead(${lead.id})">Просмотр</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function viewLead(id) {
+            const resp = await fetch(`/api/v1/leads/${id}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const lead = await resp.json();
+            const details = document.getElementById('lead-details');
+            details.innerHTML = `
+                <h3>Заявка #${lead.id}</h3>
+                <p><strong>Контактные данные:</strong> ${JSON.stringify(lead.contact_data)}</p>
+                <p><strong>Бизнес:</strong> ${lead.business_info || '-'}</p>
+                <p><strong>Ниша:</strong> ${lead.business_niche || '-'}</p>
+                <p><strong>Размер компании:</strong> ${lead.company_size || '-'}</p>
+                <p><strong>Объём задачи:</strong> ${lead.task_volume || '-'}</p>
+                <p><strong>Роль:</strong> ${lead.role || '-'}</p>
+                <p><strong>Бюджет:</strong> ${lead.budget || '-'}</p>
+                <p><strong>Комментарии:</strong> ${lead.comments || '-'}</p>
+                <p><strong>Дата:</strong> ${lead.created_at}</p>
+            `;
+        }
+
+        // Услуги
+        async function loadServices() {
+            const resp = await fetch('/api/v1/admin-settings/', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const services = await resp.json();
+            const tbody = document.querySelector('#services-table tbody');
+            tbody.innerHTML = '';
+            services.forEach(s => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${s.id}</td>
+                    <td>${s.services}</td>
+                    <td>${s.budget_range}</td>
+                    <td>
+                        <button class="btn-primary" onclick="editService(${s.id})">Изменить</button>
+                        <button class="btn-danger" onclick="deleteService(${s.id})">Удалить</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function addService(e) {
+            e.preventDefault();
+            const services = document.getElementById('service-name').value;
+            const budget_range = document.getElementById('service-budget').value;
+            const resp = await fetch('/api/v1/admin-settings/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                body: JSON.stringify({ services, budget_range })
+            });
+            if (resp.ok) {
+                loadServices();
+                document.getElementById('service-form').reset();
+            } else {
+                alert('Ошибка добавления услуги');
+            }
+        }
+
+        async function editService(id) {
+            const newName = prompt('Новое название услуги:');
+            const newBudget = prompt('Новый бюджетный диапазон:');
+            if (newName && newBudget) {
+                const resp = await fetch(`/api/v1/admin-settings/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                    body: JSON.stringify({ services: newName, budget_range: newBudget })
+                });
+                if (resp.ok) loadServices();
+                else alert('Ошибка обновления');
+            }
+        }
+
+        async function deleteService(id) {
+            if (confirm('Удалить услугу?')) {
+                const resp = await fetch(`/api/v1/admin-settings/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (resp.ok) loadServices();
+                else alert('Ошибка удаления');
+            }
+        }
+
+        // Метрики
+        async function loadMetrics() {
+            const resp = await fetch('/api/v1/behavior-metrics/', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const metrics = await resp.json();
+            const container = document.getElementById('metrics-list');
+            container.innerHTML = '<h3>Последние метрики</h3>';
+            if (metrics.length === 0) {
+                container.innerHTML += '<p>Пока нет данных.</p>';
+            } else {
+                const table = document.createElement('table');
+                table.innerHTML = '<thead><tr><th>ID</th><th>Lead ID</th><th>Время на странице</th><th>Клики</th><th>Прокрутка</th><th>Дата</th></tr></thead>';
+                const tbody = document.createElement('tbody');
+                metrics.forEach(m => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${m.id}</td>
+                            <td>${m.lead_id}</td>
+                            <td>${m.page_load_time || '-'}</td>
+                            <td>${m.clicks || '-'}</td>
+                            <td>${m.scroll_depth || '-'}</td>
+                            <td>${m.created_at}</td>
+                        </tr>
+                    `;
+                });
+                table.appendChild(tbody);
+                container.appendChild(table);
+            }
+        }
+
+        // Статистика (heatmap)
+        async function openStatsModal() {
+            document.getElementById('stats-modal').style.display = 'flex';
+            const resp = await fetch('/api/v1/behavior-metrics/?skip=0&limit=100', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const metrics = await resp.json();
+            const container = document.getElementById('stats-content');
+            container.innerHTML = '<h3>Heatmap (координаты курсора)</h3>';
+            // Создаём div для heatmap
+            const heatmapDiv = document.createElement('div');
+            heatmapDiv.style.position = 'relative';
+            heatmapDiv.style.width = '100%';
+            heatmapDiv.style.height = '400px';
+            heatmapDiv.style.background = '#f9f9f9';
+            heatmapDiv.style.border = '1px solid #ddd';
+            heatmapDiv.style.margin = '10px 0';
+            heatmapDiv.style.overflow = 'hidden';
+
+            metrics.forEach(m => {
+                let other = m.other_metrics;
+                // Если other_metrics - строка, парсим в объект
+                if (typeof other === 'string') {
+                    try {
+                        other = JSON.parse(other);
+                    } catch(e) {
+                        other = {};
+                    }
+                }
+                if (other && other.cursor_positions) {
+                    try {
+                        const positions = JSON.parse(other.cursor_positions);
+                        positions.forEach(pos => {
+                            const dot = document.createElement('div');
+                            dot.style.position = 'absolute';
+                            dot.style.left = pos.x + 'px';
+                            dot.style.top = pos.y + 'px';
+                            dot.style.width = '5px';
+                            dot.style.height = '5px';
+                            dot.style.background = 'rgba(255,0,0,0.5)';
+                            dot.style.borderRadius = '50%';
+                            heatmapDiv.appendChild(dot);
+                        });
+                    } catch (e) {}
+                }
+            });
+            container.appendChild(heatmapDiv);
+        }
+
+        function closeStatsModal() {
+            document.getElementById('stats-modal').style.display = 'none';
+        }
+
+        // Инициализация
+        document.getElementById('login-form').addEventListener('submit', login);
+        document.getElementById('register-form').addEventListener('submit', register);
+        document.getElementById('service-form').addEventListener('submit', addService);
+
+        checkAdminRegistered().then(() => {
+            if (token) {
+                loadAdmin();
+            } else {
+                showLogin();
+            }
+        });
+    </script>
+</body>
+</html>

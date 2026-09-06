@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: docker.io/postgres:15-alpine
+    container_name: orderport_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data_orderport:/var/lib/postgresql/data
+    # Порт не публикуем наружу — только внутренняя сеть
+    networks:
+      - orderport_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: orderport_backend
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - orderport_network
+    # Порт не публикуем наружу — только внутренняя сеть
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  nginx:
+    image: docker.io/nginx:alpine
+    container_name: orderport_nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./app/static:/usr/share/nginx/html:ro
+    ports:
+      - "80:80"
+      - "443:443"  # если будет SSL, добавьте сертификаты
+    depends_on:
+      - backend
+    networks:
+      - orderport_network
+    restart: unless-stopped
+    command: nginx -c /etc/nginx/nginx.conf -g 'daemon off;'
+
+  # pgAdmin и registry отключены для продакшена (закомментированы)
+
+volumes:
+  postgres_data_orderport:
+
+networks:
+  orderport_network:
+    driver: bridge
