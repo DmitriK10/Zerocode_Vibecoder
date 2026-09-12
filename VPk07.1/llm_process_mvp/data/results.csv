@@ -1,0 +1,11 @@
+file,record_id,status,category,priority,confidence,escalate,error
+01_billing_simple.txt,73,processed,billing,high,high,False,
+02_technical_outage.txt,74,processed,technical,high,high,False,
+03_delivery_late.txt,75,processed,delivery,high,high,False,
+04_complaint_aggressive.txt,76,escalated,complaint,high,high,True,
+05_vague_greeting.txt,77,escalated,other,low,low,True,
+06_spam_irrelevant.txt,78,escalated,other,low,low,True,
+07_multi_issue.txt,79,escalated,billing,high,high,True,
+08_long_verbose.txt,80,processed,technical,high,high,False,
+09_english.txt,81,processed,delivery,high,high,False,
+10_no_actionable_info.txt,82,escalated,other,low,low,True,

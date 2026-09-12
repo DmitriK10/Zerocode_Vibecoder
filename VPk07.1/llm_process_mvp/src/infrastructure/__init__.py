@@ -1,0 +1,1 @@
+"""Infrastructure: concrete adapters (OpenAI proxy, SQLite)."""

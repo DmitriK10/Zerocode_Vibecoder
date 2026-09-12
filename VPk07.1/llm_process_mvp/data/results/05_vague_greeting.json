@@ -1,0 +1,17 @@
+{
+  "file": "05_vague_greeting.txt",
+  "record_id": 77,
+  "status": "escalated",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Привет",
+  "result": {
+    "category": "other",
+    "summary": "Клиент написал приветствие.",
+    "priority": "low",
+    "next_action": "Пометить как спам, не пускать в очередь на обработку.",
+    "fields": {},
+    "confidence": "low",
+    "escalate": true
+  }
+}

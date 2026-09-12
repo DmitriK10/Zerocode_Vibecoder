@@ -1,0 +1,20 @@
+{
+  "file": "06_spam_irrelevant.txt",
+  "record_id": 78,
+  "status": "escalated",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Купите базу email-адресов 10 миллионов всего за 500 рублей! Гарантия качества!\nПишите в телеграм @spam_king.",
+  "result": {
+    "category": "other",
+    "summary": "Сообщение о продаже базы email-адресов.",
+    "priority": "low",
+    "next_action": "Пометить как спам, не пускать в очередь на обработку.",
+    "fields": {
+      "offer": "база email-адресов 10 миллионов за 500 рублей",
+      "contact": "@spam_king"
+    },
+    "confidence": "low",
+    "escalate": true
+  }
+}

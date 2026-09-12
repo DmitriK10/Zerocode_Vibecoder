@@ -1,0 +1,19 @@
+{
+  "file": "03_delivery_late.txt",
+  "record_id": 75,
+  "status": "processed",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Заказ №7812 должен был приехать ещё вчера. Курьер не приехал, никто не позвонил.\nГде мой товар? Я уже оплатил доставку.",
+  "result": {
+    "category": "delivery",
+    "summary": "Курьер не приехал с заказом №7812, доставка была оплачена.",
+    "priority": "high",
+    "next_action": "Уточнить статус доставки заказа №7812 и связаться с клиентом.",
+    "fields": {
+      "order_number": "7812"
+    },
+    "confidence": "high",
+    "escalate": false
+  }
+}

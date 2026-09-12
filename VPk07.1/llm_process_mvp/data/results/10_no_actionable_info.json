@@ -1,0 +1,17 @@
+{
+  "file": "10_no_actionable_info.txt",
+  "record_id": 82,
+  "status": "escalated",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "ок",
+  "result": {
+    "category": "other",
+    "summary": "Клиент отправил пустое сообщение.",
+    "priority": "low",
+    "next_action": "Пометить как спам, не пускать в очередь на обработку.",
+    "fields": {},
+    "confidence": "low",
+    "escalate": true
+  }
+}

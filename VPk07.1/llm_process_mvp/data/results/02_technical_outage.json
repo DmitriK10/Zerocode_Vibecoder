@@ -1,0 +1,20 @@
+{
+  "file": "02_technical_outage.txt",
+  "record_id": 74,
+  "status": "processed",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Сайт не открывается уже второй час, клиенты не могут оформить заказ. Ошибка 502\nBad Gateway. Началось после 14:30 МСК. Это критично, теряем продажи.",
+  "result": {
+    "category": "technical",
+    "summary": "Сайт не открывается, ошибка 502 Bad Gateway, теряем продажи.",
+    "priority": "high",
+    "next_action": "Проверить работу сайта и устранить проблему.",
+    "fields": {
+      "error": "502 Bad Gateway",
+      "time": "после 14:30 МСК"
+    },
+    "confidence": "high",
+    "escalate": false
+  }
+}

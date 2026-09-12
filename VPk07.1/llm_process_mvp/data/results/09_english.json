@@ -1,0 +1,19 @@
+{
+  "file": "09_english.txt",
+  "record_id": 81,
+  "status": "processed",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Hello, I ordered the product two weeks ago, but it hasn't arrived yet. Order\nnumber is 5432. Could you please check the shipment status? Thanks.",
+  "result": {
+    "category": "delivery",
+    "summary": "Клиент интересуется статусом доставки заказа.",
+    "priority": "high",
+    "next_action": "Проверить статус доставки заказа №5432.",
+    "fields": {
+      "order_number": "5432"
+    },
+    "confidence": "high",
+    "escalate": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "file": "04_complaint_aggressive.txt",
+  "record_id": 76,
+  "status": "escalated",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Это уже третий раз, когда вы портите мой заказ! Я буду жаловаться в Роспотребнадзор\nи в суд. Верните деньги немедленно и компенсируйте моральный ущерб.",
+  "result": {
+    "category": "complaint",
+    "summary": "Клиент недоволен качеством заказа и требует вернуть деньги и компенсацию морального ущерба.",
+    "priority": "high",
+    "next_action": "Обработать жалобу клиента и подготовить ответ.",
+    "fields": {},
+    "confidence": "high",
+    "escalate": true
+  }
+}

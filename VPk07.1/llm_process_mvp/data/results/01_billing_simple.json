@@ -1,0 +1,20 @@
+{
+  "file": "01_billing_simple.txt",
+  "record_id": 73,
+  "status": "processed",
+  "error": null,
+  "model": "gpt-4o-mini",
+  "raw_input": "Здравствуйте! Не пришёл счёт за март, заказ №42. Оплатить нужно до 25 числа, иначе\nостановят отгрузку. Прошу выслать счёт повторно на почту client@example.com.",
+  "result": {
+    "category": "billing",
+    "summary": "Не пришёл счёт за март, требуется выслать повторно.",
+    "priority": "high",
+    "next_action": "Выслать счёт повторно на почту client@example.com.",
+    "fields": {
+      "заказ": "42",
+      "срок оплаты": "25 число"
+    },
+    "confidence": "high",
+    "escalate": false
+  }
+}

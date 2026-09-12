@@ -1,0 +1,13 @@
+# Минимальная конфигурация проекта.
+#
+# Здесь намеренно нет секции [project]/[build-system] — проект не
+# устанавливается как пакет, запускается из исходников. Если в v2
+# понадобится пакетирование, добавим [project] и build-backend.
+#
+# Главное, что даёт этот файл сейчас: корректный pythonpath для pytest,
+# чтобы `import smoke_test` из tests/ работал без хаков в conftest.py.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
