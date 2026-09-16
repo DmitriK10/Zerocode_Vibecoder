@@ -719,7 +719,7 @@ docker compose exec app alembic upgrade head  # если менялась схе
 
 ## Лицензия
 
-Распространяется под лицензией **MIT** — см. [LICENSE.txt](LICENSE).
+Распространяется под лицензией **MIT** — см. [LICENSE](LICENSE.txt).
 
 ---
 
