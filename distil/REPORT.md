@@ -288,7 +288,7 @@ CREATE TABLE audit_runs (
 | 7 | **SQLite под нагрузкой** | Выбран PostgreSQL + async SQLAlchemy |
 | 8 | **Утечка секретов в логи** | structlog редактирует поля `*_key`, `password`, `token` |
 | 9 | **Открытые порты в интернет** | Порты 8000/5432 закрыты на 127.0.0.1; UFW открывает только 22/80/443 |
-| 10 | **Технический долг** | Repository + DIP + Alembic + 171 тест |
+| 10 | **Технический долг** | Repository + DIP + Alembic + 169 тест |
 
 ---
 
@@ -416,7 +416,7 @@ Docker пробрасывает порты раньше UFW. Решение: я�
 
 **Frontend:** Jinja2 + HTMX + Tailwind (CDN).
 
-**Качество:** 171 тест (pytest), `ruff` (clean), `mypy --strict`
+**Качество:** 169 тест (pytest), `ruff` (clean), `mypy --strict`
 (no issues).
 
 **Инфраструктура:** Docker multi-stage, docker-compose,
@@ -435,7 +435,7 @@ Caddy (HTTPS), UFW.
 ## Итог
 
 Проект — **MVP с промышленной архитектурой**. Развёрнут на публичном
-сервере с HTTPS и Basic Auth. Покрыт 171 тестом, проходит `ruff`
+сервере с HTTPS и Basic Auth. Покрыт 169 тестом, проходит `ruff`
 и `mypy --strict`. Готов к развитию в продукт без переписывания ядра.
 
 **Ключевой принцип:** LLM — ассистент, а не оракул. Там, где модель
