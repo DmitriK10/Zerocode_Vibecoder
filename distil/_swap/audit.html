@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Аудит — Distil{% endblock %}
+{% block content %}
+
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-xl font-semibold">Аудит</h1>
+  <form method="get" action="/audit" class="flex items-center gap-2 text-sm">
+    <select name="status" class="border border-slate-300 rounded px-2 py-1.5">
+      <option value="">все статусы</option>
+      <option value="ok" {% if audit_status and audit_status.value == "ok" %}selected{% endif %}>ok</option>
+      <option value="error" {% if audit_status and audit_status.value == "error" %}selected{% endif %}>error</option>
+    </select>
+    <input type="number" name="limit" value="{{ limit }}" min="1" max="500"
+           class="w-20 border border-slate-300 rounded px-2 py-1.5">
+    <button type="submit" class="px-3 py-1 rounded border border-slate-300 hover:bg-white">Применить</button>
+  </form>
+</div>
+
+<div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+  <table class="w-full text-sm">
+    <thead class="bg-slate-100 text-slate-600">
+      <tr>
+        <th class="text-left px-3 py-2">ID</th>
+        <th class="text-left px-3 py-2">Действие</th>
+        <th class="text-left px-3 py-2">Статус</th>
+        <th class="text-right px-3 py-2">Длит., мс</th>
+        <th class="text-right px-3 py-2">На проверку</th>
+        <th class="text-left px-3 py-2">Создано</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for run in runs %}
+      <tr class="border-t border-slate-100 align-top">
+        <td class="px-3 py-2 text-slate-500">{{ run.id }}</td>
+        <td class="px-3 py-2">{{ run.action.value }}</td>
+        <td class="px-3 py-2">
+          {% if run.status.value == "ok" %}
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 text-xs">ok</span>
+          {% else %}
+            <span class="px-2 py-0.5 rounded bg-red-100 text-red-900 text-xs">error</span>
+          {% endif %}
+        </td>
+        <td class="px-3 py-2 text-right">{{ run.duration_ms }}</td>
+        <td class="px-3 py-2 text-right">{{ run.needs_review_count }}</td>
+        <td class="px-3 py-2 text-slate-500">{{ run.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+      </tr>
+      {% if run.error or run.input_payload or run.output_payload %}
+      <tr class="border-t border-slate-50">
+        <td colspan="6" class="px-3 pb-3">
+          <details class="text-xs text-slate-600">
+            <summary class="cursor-pointer text-slate-500">детали</summary>
+            {% if run.error %}
+              <div class="mt-1 text-red-700">error: {{ run.error }}</div>
+            {% endif %}
+            {% if run.input_payload %}
+              <pre class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 overflow-auto">{{ run.input_payload | tojson(indent=2) }}</pre>
+            {% endif %}
+            {% if run.output_payload %}
+              <pre class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 overflow-auto">{{ run.output_payload | tojson(indent=2) }}</pre>
+            {% endif %}
+          </details>
+        </td>
+      </tr>
+      {% endif %}
+      {% else %}
+      <tr><td colspan="6" class="px-3 py-6 text-center text-slate-500">Записей нет.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

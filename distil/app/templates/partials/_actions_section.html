@@ -1,0 +1,36 @@
+<section id="actions-section">
+  {% if error %}
+    <div class="mb-3 px-3 py-2 rounded border border-red-300 bg-red-50 text-red-800 text-sm">
+      {{ error }}
+    </div>
+  {% endif %}
+
+  <div class="flex items-center justify-between mb-2">
+    <h2 class="text-sm font-medium text-slate-600">Действия ({{ actions|length }})</h2>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+    <table class="w-full text-sm">
+      <thead class="bg-slate-100 text-slate-600">
+        <tr>
+          <th class="text-left px-3 py-2">#</th>
+          <th class="text-left px-3 py-2">Действие</th>
+          <th class="text-left px-3 py-2">Ответств.</th>
+          <th class="text-left px-3 py-2">Срок</th>
+          <th class="text-left px-3 py-2">Приоритет</th>
+          <th class="text-left px-3 py-2">Проверка</th>
+          <th class="text-right px-3 py-2">—</th>
+        </tr>
+      </thead>
+      <tbody id="actions-rows">
+        {% for action in actions %}
+          {% include "partials/_action_row.html" %}
+        {% else %}
+          <tr><td colspan="7" class="px-3 py-6 text-center text-slate-500">
+            Действий ещё нет. Нажмите «Извлечь действия».
+          </td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+# Override for a single-host deployment with a managed PostgreSQL.
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# In this mode there is no local Postgres — DATABASE_URL must point at a
+# managed instance (Neon, Supabase, RDS, ...) and be set in .env.
+
+services:
+  db:
+    # Disable the local Postgres service.
+    deploy:
+      replicas: 0
+
+  app:
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+    restart: always

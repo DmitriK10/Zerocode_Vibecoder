@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Витрина — Distil{% endblock %}
+{% block content %}
+
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-xl font-semibold">Витрина текстов</h1>
+  <div class="flex gap-2 text-sm">
+    <a href="/export/texts.csv" class="px-3 py-1.5 rounded border border-slate-300 hover:bg-white">Texts CSV</a>
+    <a href="/export/actions.csv" class="px-3 py-1.5 rounded border border-slate-300 hover:bg-white">Actions CSV</a>
+    <a href="/export/actions.json" class="px-3 py-1.5 rounded border border-slate-300 hover:bg-white">Actions JSON</a>
+  </div>
+</div>
+
+<form method="post" action="/web/texts"
+      class="bg-white border border-slate-200 rounded-lg p-4 mb-6">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+    <label class="text-sm">
+      <span class="block text-slate-600 mb-1">Источник</span>
+      <select name="source" class="w-full border border-slate-300 rounded px-2 py-1.5">
+        <option value="email">email</option>
+        <option value="meeting">meeting</option>
+        <option value="note">note</option>
+      </select>
+    </label>
+    <label class="text-sm md:col-span-3">
+      <span class="block text-slate-600 mb-1">Текст</span>
+      <textarea name="raw_text" rows="3" required minlength="10"
+                class="w-full border border-slate-300 rounded px-2 py-1.5 font-mono text-xs"
+                placeholder="Вставьте письмо, заметку или расшифровку встречи..."></textarea>
+    </label>
+  </div>
+  <div class="mt-3 flex justify-end">
+    <button type="submit"
+            class="px-4 py-1.5 rounded bg-blue-600 text-white text-sm hover:bg-blue-700">
+      Добавить текст
+    </button>
+  </div>
+</form>
+
+<form method="get" action="/" class="mb-3 flex items-center gap-3 text-sm">
+  <label class="inline-flex items-center gap-2">
+    <input type="checkbox" name="has_review_required" value="true"
+           {% if has_review_required %}checked{% endif %}>
+    Только требующие проверки
+  </label>
+  <button type="submit" class="px-3 py-1 rounded border border-slate-300 hover:bg-white">
+    Применить
+  </button>
+</form>
+
+<div class="bg-white border border-slate-200 rounded-lg overflow-hidden">
+  <table class="w-full text-sm">
+    <thead class="bg-slate-100 text-slate-600">
+      <tr>
+        <th class="text-left px-3 py-2">ID</th>
+        <th class="text-left px-3 py-2">Источник</th>
+        <th class="text-left px-3 py-2">Статус</th>
+        <th class="text-right px-3 py-2">Действий</th>
+        <th class="text-right px-3 py-2">На проверку</th>
+        <th class="text-left px-3 py-2">Создано</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr class="border-t border-slate-100 hover:bg-slate-50">
+        <td class="px-3 py-2"><a class="text-blue-600 hover:underline" href="/texts/{{ row.text.id }}">#{{ row.text.id }}</a></td>
+        <td class="px-3 py-2">{{ row.text.source.value }}</td>
+        <td class="px-3 py-2">{{ row.text.status.value }}</td>
+        <td class="px-3 py-2 text-right">{{ row.actions_count }}</td>
+        <td class="px-3 py-2 text-right">
+          {% if row.needs_review_count %}
+            <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-900">{{ row.needs_review_count }}</span>
+          {% else %}0{% endif %}
+        </td>
+        <td class="px-3 py-2 text-slate-500">{{ row.text.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6" class="px-3 py-6 text-center text-slate-500">Пока ничего нет.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

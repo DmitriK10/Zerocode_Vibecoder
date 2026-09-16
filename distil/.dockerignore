@@ -1,0 +1,39 @@
+# VCS
+.git
+.gitignore
+
+# Local env & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tests & tooling caches
+tests/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Docs / editors
+README.md
+docs/
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Local DBs
+*.db
+*.sqlite
+*.sqlite3

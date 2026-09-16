@@ -1,0 +1,45 @@
+# Local development & demo stack: app + PostgreSQL 16.
+# Start with:  docker compose up --build
+# Migrate with: docker compose exec app alembic upgrade head
+# Seed with:    docker compose exec app python -m scripts.seed
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: distil-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: distil
+      POSTGRES_PASSWORD: distil
+      POSTGRES_DB: distil
+    ports:
+      - "5432:5432"
+    volumes:
+      - distil-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U distil -d distil"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: distil-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Override to point at the compose DB regardless of local .env.
+      DATABASE_URL: postgresql+asyncpg://distil:distil@db:5432/distil
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "alembic upgrade head && python run.py"
+
+volumes:
+  distil-pgdata:

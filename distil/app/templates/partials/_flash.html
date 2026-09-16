@@ -1,0 +1,8 @@
+{% set palette = {
+  "created": ("bg-emerald-50", "border-emerald-300", "text-emerald-900"),
+  "extracted": ("bg-emerald-50", "border-emerald-300", "text-emerald-900"),
+} %}
+{% set colors = palette.get(flash, ("bg-slate-100", "border-slate-300", "text-slate-800")) %}
+<div class="mb-4 px-3 py-2 rounded border {{ colors[0] }} {{ colors[1] }} {{ colors[2] }} text-sm">
+  {{ flash }}
+</div>
