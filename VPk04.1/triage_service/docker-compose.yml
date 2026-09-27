@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  triage_api:
+    build: .
+    container_name: vp04_triage_service
+    ports:
+      - "8000:8000"
+    volumes:
+      # КРИТИЧЕСКИ ВАЖНО: Сохраняем SQLite БД и логи между перезапусками контейнера
+      - ./tickets.db:/app/tickets.db
+      - ./app.log:/app/app.log
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
