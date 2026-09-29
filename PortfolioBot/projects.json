@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "title": "Zerocode_Vibecoder (Портфолио-хаб)",
+      "role": "Fullstack Python Developer",
+      "description": "Комплексное решение для презентации навыков: Telegram-бот и сайт-резюме, работающие на единой базе данных проектов.",
+      "stack": ["Python", "Aiogram 3", "Flask", "HTML/CSS/JS", "LLM Integration (proxyapi.ru)"],
+      "features": [
+        "Единый source of truth (JSON) для бота и сайта",
+        "Интеграция с LLM через прокси-сервис",
+        "Архитектура с разделением ответственности (SRP/DIP)",
+        "Покрытие кода модульными тестами (pytest)"
+      ],
+      "link": "https://github.com/DmitriK10/Zerocode_Vibecoder",
+      "status": "✅ Активный репозиторий"
+    },
+    {
+      "title": "Интеграция Telegram и amoCRM",
+      "role": "Backend Developer",
+      "description": "Сервис для автоматической передачи заявок из Telegram-бота в CRM-систему без участия человека.",
+      "stack": ["Python", "FastAPI (или Flask)", "Webhooks", "amoCRM API"],
+      "features": [
+        "Прием и обработка вебхуков от Telegram",
+        "Маппинг данных и создание сделок в amoCRM через REST API",
+        "Базовое логирование и обработка ошибок сети"
+      ],
+      "link": "https://github.com/DmitriK10/Zerocode_Vibecoder",
+      "status": "✅ Реализовано"
+    },
+    {
+      "title": "Асинхронный парсер маркетплейсов",
+      "role": "Python Developer",
+      "description": "Скрипт для автоматизированного сбора данных о товарах и ценах с маркетплейсов.",
+      "stack": ["Python", "Asyncio", "aiohttp", "BeautifulSoup", "CSV"],
+      "features": [
+        "Асинхронный сбор данных для значительного ускорения парсинга",
+        "Очистка и структурирование полученной информации",
+        "Экспорт результатов в CSV-файл для последующего анализа"
+      ],
+      "link": "https://github.com/DmitriK10/Zerocode_Vibecoder",
+      "status": "✅ Реализовано"
+    }
+  ]
+}
