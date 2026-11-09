@@ -63,7 +63,6 @@ text
 
 - **Технологии:** Python, SQLite, ООП
 - [📁 Перейти к проекту](VPa06/DiscountCalculator)
-- [📸 Скриншот] (добавь позже)
 
 ---
 
@@ -165,24 +164,14 @@ pip install -r requirements.txt
 
 💡 Совет: Для каждого проекта внутри папки есть свой README с детальным запуском.
 
-🌐 Демо и ссылки
-Telegram-канал -
-
-Действующий бот – 
-
-Сайт-портфолио – https://dmitrik10.ru)
-
 📬 Контакты
-GitHub: DmitriK10
+GitHub: [DmitriK10](https://github.com/DmitriK10)
 
-Telegram: @DmitriK10
+Telegram: [@DmitriiKp](https://t.me/DmitriiKp)
 
-Email: ymd@yandex.ru
+Email: kupriyanyuk.d@yandex.ru
 
 📝 Лицензия
 Этот репозиторий распространяется под лицензией MIT — подробности в файле LICENSE (если он есть).
 
 ⭐️ Если тебе понравились мои проекты, поставь звёздочку! Это мотивирует меня развиваться дальше.
-
-📸 Скриншоты (будут добавлены позже)
-Здесь будут скриншоты интерфейсов ключевых проектов.
