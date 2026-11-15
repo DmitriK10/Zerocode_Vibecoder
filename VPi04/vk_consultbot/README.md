@@ -131,7 +131,7 @@ Config — использует dataclass для типизированной з
 🤝 Контакты и обратная связь
 Разработчик: Ваше имя (или команда)
 
-Email: dmitrkomov@gmail.com
+Email: dmitrii@kupriianiuk.ru
 
 GitHub: https://github.com/DmitriK10/Zerocode_Vibecoder
 

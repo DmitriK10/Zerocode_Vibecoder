@@ -169,7 +169,7 @@ GitHub: [DmitriK10](https://github.com/DmitriK10)
 
 Telegram: [@DmitriiKp](https://t.me/DmitriiKp)
 
-Email: kupriyanyuk.d@yandex.ru
+Email: dmitrii@kupriianiuk.ru
 
 📝 Лицензия
 Этот репозиторий распространяется под лицензией MIT — подробности в файле LICENSE (если он есть).

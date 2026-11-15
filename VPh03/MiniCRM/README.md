@@ -215,7 +215,7 @@ Google Cloud Platform – за мощные API.
 Всем пользователям и контрибьюторам!
 
 📬 Контакты
-Если у вас есть вопросы или предложения, создавайте Issue в репозитории или пишите на почту: dmitrkomov@gmail.com.
+Если у вас есть вопросы или предложения, создавайте Issue в репозитории или пишите на почту: dmitrii@kupriianiuk.ru.
 Github: https://github.com/DmitriK10/Zerocode_Vibecoder
 
 Спасибо, что используете Мини-CRM! 🚀

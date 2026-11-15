@@ -145,6 +145,6 @@ FAQ – покажет ответы на частые вопросы.
 
 Автор: Дмитрий К.
 Дата: Август 2026
-Связь: dmitrkomov@gmail.com  https://github.com/DmitriK10/Zerocode_Vibecoder
+Связь: dmitrii@kupriianiuk.ru  https://github.com/DmitriK10/Zerocode_Vibecoder
 
 
